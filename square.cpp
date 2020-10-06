@@ -33,10 +33,10 @@ void Square::draw(Canvas &c)
 
 }
 
-QStringList Square::toString()
-{
-    return QStringList() << "word1" << "word2";
+//QStringList Square::toString()
+//{
+//    return QStringList() << "word1" << "word2";
 
-}
+//}
 
 

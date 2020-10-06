@@ -5,7 +5,7 @@
 #include "elipse.h"
 #include "rectangle.h"
 #include "canvas.h"
-#include <QWidget>
+//#include <QWidget>
 
 Shapes::Shapes(QWidget *parent) :
     QMainWindow(parent),
@@ -43,10 +43,10 @@ void Shapes::on_createShape_clicked()
 
 
     if(shape_type == "Circle"){
-//        shape = new Circle(penWidth,
-//                           penColor,
-//                           fillColor,
-//                           prop1);
+        shape = new Circle(penWidth,
+                           penColor,
+                           fillColor,
+                           prop1);
     }
     else if (shape_type == "Square"){
         shape = new Square(penWidth,
@@ -56,22 +56,23 @@ void Shapes::on_createShape_clicked()
 
     }
     else if (shape_type == "Elipse"){
-//        shape = new Elipse(penWidth,
-//                           penColor,
-//                           fillColor,
-//                           prop1,
-//                           prop2);
+        shape = new Elipse(penWidth,
+                           penColor,
+                           fillColor,
+                           prop1,
+                           prop2);
 //        qDebug() << "in shapes .cpp " << typeid(shape).name();
     }
     else if (shape_type == "Rectangle"){
-//        shape = new RectAngle(penWidth,
-//                              penColor,
-//                              fillColor,
-//                              prop1,
-//                              prop2);
+        shape = new RectAngle(penWidth,
+                              penColor,
+                              fillColor,
+                              prop1,
+                              prop2);
    }
 
     shapeList.append(shape->toString());
+    qDebug() << shape->toString();
     shape->draw(*canvas);
     text->setText(QString::number(shapeList.count()));
 

@@ -14,6 +14,17 @@ void Shape2Property::setProperty1(int value)
 {
     property1 = value;
 }
+
+QStringList Shape2Property::toString()
+{
+    return QStringList() << getType()
+                         << QString::number(getProperty1())
+                         << QString::number(getProperty2())
+                         << getPenColor().name()
+                         << QString::number(getPenWidth())
+                         << getFillColor().name();
+
+}
 int Shape2Property::getProperty2() const
 {
     return property2;

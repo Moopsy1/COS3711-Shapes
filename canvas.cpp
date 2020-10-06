@@ -1,6 +1,6 @@
 #include "canvas.h"
 #include <QPainter>
-#include <QDebug>
+//#include <QDebug>
 
 Canvas::Canvas(QWidget *parent) :
     QWidget(parent)
