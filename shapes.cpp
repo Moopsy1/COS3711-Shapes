@@ -22,7 +22,9 @@ Shapes::Shapes(QWidget *parent) :
     ui->fillColCombo->addItems(colorNames);
     ui->penColCombo->addItems(colorNames);
     ui->penColCombo->setCurrentText("black");
-    text->setText(QString::number(shapeList.count()));
+    shapeList = shapeList->getinstance();
+
+    text->setText(QString::number(shapeList->count()));
 
 }
 
@@ -71,9 +73,9 @@ void Shapes::on_createShape_clicked()
                               prop2);
    }
 
-    shapeList.append(shape->toString());
+    shapeList->append(shape->toString());
     qDebug() << shape->toString();
     shape->draw(*canvas);
-    text->setText(QString::number(shapeList.count()));
+    text->setText(QString::number(shapeList->count()));
 
 }
