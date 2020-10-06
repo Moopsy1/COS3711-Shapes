@@ -5,6 +5,8 @@
 #include "abstractshape.h"
 #include "canvas.h"
 #include <QtWidgets>
+#include "square.h"
+#include <QSharedPointer>
 
 
 namespace Ui {
@@ -27,7 +29,7 @@ private:
     Canvas *canvas;
     Ui::Shapes *ui;
     QTextEdit *text;
-
+    QList<QStringList> shapeList;
     
 };
 

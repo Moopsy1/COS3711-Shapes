@@ -13,18 +13,17 @@ Shapes::Shapes(QWidget *parent) :
 {
     ui->setupUi(this);
     canvas = new Canvas;
-    ui->MainLayout->addWidget(canvas);
 
-    text = new QTextEdit;
+    text = new QTextEdit("Index:");
+    ui->MainLayout->addWidget(canvas);
+    ui->MainLayout->addWidget(text);
 
     QStringList colorNames = QColor::colorNames();
     ui->fillColCombo->addItems(colorNames);
     ui->penColCombo->addItems(colorNames);
-    //ui->prop1Spinbox->
     ui->penColCombo->setCurrentText("black");
+    text->setText(QString::number(shapeList.count()));
 
-
-    //    }
 }
 
 Shapes::~Shapes()
@@ -44,36 +43,36 @@ void Shapes::on_createShape_clicked()
 
 
     if(shape_type == "Circle"){
-        shape = new Circle(penWidth,
-                           penColor,
-                           fillColor,
-                           prop1);
-    }
-    else if (shape_type == "Square"){
-
-//        shape = new Square(penWidth,
+//        shape = new Circle(penWidth,
 //                           penColor,
 //                           fillColor,
 //                           prop1);
-
+    }
+    else if (shape_type == "Square"){
+        shape = new Square(penWidth,
+                           penColor,
+                           fillColor,
+                           prop1);
 
     }
     else if (shape_type == "Elipse"){
-        shape = new Elipse(penWidth,
-                           penColor,
-                           fillColor,
-                           prop1,
-                           prop2);
-        qDebug() << "in shapes .cpp " << typeid(shape).name();
+//        shape = new Elipse(penWidth,
+//                           penColor,
+//                           fillColor,
+//                           prop1,
+//                           prop2);
+//        qDebug() << "in shapes .cpp " << typeid(shape).name();
     }
     else if (shape_type == "Rectangle"){
-        shape = new RectAngle(penWidth,
-                              penColor,
-                              fillColor,
-                              prop1,
-                              prop2);
-    }
-    //canvas->setShape(shape);
+//        shape = new RectAngle(penWidth,
+//                              penColor,
+//                              fillColor,
+//                              prop1,
+//                              prop2);
+   }
 
-    canvas->setDetails(prop1, prop2, shape_type, penWidth, penColor, fillColor);
+    shapeList.append(shape->toString());
+    shape->draw(*canvas);
+    text->setText(QString::number(shapeList.count()));
+
 }

@@ -6,7 +6,7 @@ class Circle : public Shape1Property
 {
 public:
     Circle(int penWidth, QColor penColor, QColor fillColor, int p1);
-    void draw();
+    void draw(Canvas &c);
 };
 
 #endif // CIRCLE_H

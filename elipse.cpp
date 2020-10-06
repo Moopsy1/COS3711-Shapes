@@ -3,16 +3,12 @@
 Elipse::Elipse(int penWidth, QColor penColor, QColor fillColor, int p1, int p2)
     : Shape2Property(penWidth, penColor, fillColor, p1, p2)
 {
+    setType("Elipse");
     //qDebug() << "used Circle constructor";
 }
 
-void Elipse::draw()
+void Elipse::draw(Canvas &c)
 {
+    c.setDetails(getProperty1(), getProperty2(), getType(), getPenWidth(), getPenColor(), getFillColor());
 
-    qDebug() << "We will draw a" << typeid(this).name()
-             << " with property1: " << property1 <<endl
-             << " with property2: " << property2 <<endl
-             << "at Pen width: " << penWidth <<endl
-             << "at Pen Color: " << penColor <<endl
-             << "at fillColor: " << fillColor <<endl;
 }

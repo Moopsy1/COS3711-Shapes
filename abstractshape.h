@@ -3,15 +3,33 @@
 #include <QColor>
 #include <QDebug>
 #include <typeinfo>
+#include <QTextEdit>
+#include <canvas.h>
+
+
 class AbstractShape
 {
 public:
     AbstractShape(int penWidth, QColor penColor, QColor fillColor);
-    virtual void draw() = 0;
+    virtual void draw(Canvas &c) = 0;
+    virtual QStringList toString() = 0;
+
+    int getPenWidth() const;
+    void setPenWidth(int value);
+
+    QColor getPenColor() const;
+    void setPenColor(const QColor &value);
+
+    QColor getFillColor() const;
+    void setFillColor(const QColor &value);
+
+    QString getType() const;
+    void setType(const QString &value);
 
 protected:
     int penWidth;
     QColor penColor, fillColor;
+    QString type;
 
 };
 

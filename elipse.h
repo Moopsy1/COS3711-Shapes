@@ -6,7 +6,7 @@ class Elipse : public Shape2Property
 {
 public:
     Elipse(int penWidth, QColor penColor, QColor fillColor, int p1, int p2);
-    void draw();
+    void draw(Canvas &c);
 };
 
 #endif // ELIPSE_H

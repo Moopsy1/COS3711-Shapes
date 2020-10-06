@@ -5,3 +5,23 @@ Shape2Property::Shape2Property(int penWidth, QColor penColor, QColor fillColor, 
 {
     //qDebug() << "used Shape1 Property constructor";
 }
+int Shape2Property::getProperty1() const
+{
+    return property1;
+}
+
+void Shape2Property::setProperty1(int value)
+{
+    property1 = value;
+}
+int Shape2Property::getProperty2() const
+{
+    return property2;
+}
+
+void Shape2Property::setProperty2(int value)
+{
+    property2 = value;
+}
+
+

@@ -6,7 +6,7 @@ class RectAngle : public Shape2Property
 {
 public:
     RectAngle(int penWidth, QColor penColor, QColor fillColor, int p1, int p2);
-    void draw();
+    void draw(Canvas &c);
 };
 
 #endif // RECTANGLE_H

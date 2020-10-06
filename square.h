@@ -7,7 +7,9 @@ class Square : public Shape1Property
 {
 public:
     Square(int penWidth, QColor penColor, QColor fillColor, int p1);
-    void draw();
+    void draw(Canvas &c);
+    QStringList toString();
+
 
 };
 

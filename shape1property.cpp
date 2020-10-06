@@ -6,3 +6,13 @@ Shape1Property::Shape1Property(int penWidth, QColor penColor, QColor fillColor, 
 {
     //qDebug() << "used Shape1 Property constructor";
 }
+int Shape1Property::getProperty1() const
+{
+    return property1;
+}
+
+void Shape1Property::setProperty1(int value)
+{
+    property1 = value;
+}
+
