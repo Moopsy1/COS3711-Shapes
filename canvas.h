@@ -2,7 +2,7 @@
 #define CANVAS_H
 #include <QBrush>
 #include <QPen>
-#include <QPixmap>
+//#include <QPixmap>
 #include <QWidget>
 //#include <abstractshape.h>
 

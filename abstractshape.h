@@ -3,7 +3,7 @@
 #include <QColor>
 #include <QDebug>
 #include <typeinfo>
-#include <QTextEdit>
+//#include <QTextEdit>
 #include <canvas.h>
 
 
@@ -13,6 +13,7 @@ public:
     AbstractShape(int penWidth, QColor penColor, QColor fillColor);
     virtual void draw(Canvas &c) = 0;
     virtual QStringList toString() = 0;
+    virtual ~AbstractShape(){}
 
     int getPenWidth() const;
     void setPenWidth(int value);
