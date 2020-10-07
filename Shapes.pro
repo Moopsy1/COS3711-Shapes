@@ -18,6 +18,7 @@ SOURCES += main.cpp\
     shape1property.cpp \
     circle.cpp\
     canvas.cpp \
+    shapeslist.cpp \
     square.cpp \
     shape2property.cpp \
     elipse.cpp \
@@ -28,6 +29,7 @@ HEADERS  += shapes.h \
     shape1property.h \
     circle.h\
     canvas.h \
+    shapeslist.h \
     square.h \
     shape2property.h \
     elipse.h \

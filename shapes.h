@@ -25,12 +25,17 @@ public:
 private slots:
     void on_createShape_clicked();
 
+    void on_Previous_clicked();
+
+    void on_Next_clicked();
+
 private:
     QSharedPointer<AbstractShape> shape;
     Canvas *canvas;
     Ui::Shapes *ui;
     QTextEdit *text;
     ShapesList *shapeList;
+    int index = 0;
 
 };
 

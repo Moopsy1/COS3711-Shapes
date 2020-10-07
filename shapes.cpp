@@ -24,6 +24,9 @@ Shapes::Shapes(QWidget *parent) :
     ui->penColCombo->setCurrentText("black");
     shapeList = shapeList->getinstance();
 
+    if(!shapeList->isEmpty()){
+        ui->Next->setEnabled(true);
+    }
     text->setText(QString::number(shapeList->count()));
 
 }
@@ -51,33 +54,65 @@ void Shapes::on_createShape_clicked()
                            prop1));
     }
     else if (shape_type == "Square"){
-//        shape = new Square(penWidth,
-//                           penColor,
-//                           fillColor,
-//                           prop1);
+        shape = QSharedPointer<Square>( new Square(penWidth,
+                           penColor,
+                           fillColor,
+                           prop1));
 
     }
     else if (shape_type == "Elipse"){
-//        shape = new Elipse(penWidth,
-//                           penColor,
-//                           fillColor,
-//                           prop1,
-//                           prop2);
+        shape = QSharedPointer<Elipse>( new Elipse(penWidth,
+                           penColor,
+                           fillColor,
+                           prop1,
+                           prop2));
 //        qDebug() << "in shapes .cpp " << typeid(shape).name();
     }
     else if (shape_type == "Rectangle"){
-//        shape = new RectAngle(penWidth,
-//                              penColor,
-//                              fillColor,
-//                              prop1,
-//                              prop2);
+        shape = QSharedPointer<RectAngle>( new RectAngle(penWidth,
+                              penColor,
+                              fillColor,
+                              prop1,
+                              prop2));
    }
-
-    shapeList->append(shape);
+    qDebug() <<"index is" << index;
+    if(shapeList->empty()){
+        qDebug() << "shapeList is empty we append";
+        shapeList->append(shape);
+    }
+    else if (shapeList->at(index) == shapeList->last()) {
+        qDebug() << "Were at the last index we append";
+        shapeList->append(shape);
+        index++;
+    }
+    else{
+        qDebug() << "Were in the list we replace";
+        shapeList->replace(index, shape);
+    }
     //qDebug() << shape->toString();
-    qDebug() << shapeList->at(0)->toString();
+    qDebug() << shapeList->at(index)->toString();
 
-    shapeList->at(0)->draw(*canvas);
+    if(shapeList->at(index) != shapeList->last()) ui->Next->setEnabled(true);
+    if(index != 0) ui->Previous->setEnabled(true);
+    shapeList->at(index)->draw(*canvas);
     text->setText(QString::number(shapeList->count()));
 
+}
+
+void Shapes::on_Previous_clicked()
+{
+    index--;
+    shapeList->at(index)->draw(*canvas);
+    if(index== 0)ui->Previous->setEnabled(false);
+    if(shapeList->at(index) == shapeList->last()) ui->Next->setEnabled(false);
+    else ui->Next->setEnabled(true);
+
+}
+
+void Shapes::on_Next_clicked()
+{
+    index++;
+    shapeList->at(index)->draw(*canvas);
+    if(shapeList->at(index) == shapeList->last()) ui->Next->setEnabled(false);
+    if(index != 0)ui->Previous->setEnabled(true);
 }
