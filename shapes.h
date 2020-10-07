@@ -26,7 +26,7 @@ private slots:
     void on_createShape_clicked();
 
 private:
-    AbstractShape *shape;
+    QSharedPointer<AbstractShape> shape;
     Canvas *canvas;
     Ui::Shapes *ui;
     QTextEdit *text;

@@ -45,37 +45,39 @@ void Shapes::on_createShape_clicked()
 
 
     if(shape_type == "Circle"){
-        shape = new Circle(penWidth,
+        shape = QSharedPointer<Circle>( new Circle(penWidth,
                            penColor,
                            fillColor,
-                           prop1);
+                           prop1));
     }
     else if (shape_type == "Square"){
-        shape = new Square(penWidth,
-                           penColor,
-                           fillColor,
-                           prop1);
+//        shape = new Square(penWidth,
+//                           penColor,
+//                           fillColor,
+//                           prop1);
 
     }
     else if (shape_type == "Elipse"){
-        shape = new Elipse(penWidth,
-                           penColor,
-                           fillColor,
-                           prop1,
-                           prop2);
+//        shape = new Elipse(penWidth,
+//                           penColor,
+//                           fillColor,
+//                           prop1,
+//                           prop2);
 //        qDebug() << "in shapes .cpp " << typeid(shape).name();
     }
     else if (shape_type == "Rectangle"){
-        shape = new RectAngle(penWidth,
-                              penColor,
-                              fillColor,
-                              prop1,
-                              prop2);
+//        shape = new RectAngle(penWidth,
+//                              penColor,
+//                              fillColor,
+//                              prop1,
+//                              prop2);
    }
 
-    shapeList->append(shape->toString());
-    qDebug() << shape->toString();
-    shape->draw(*canvas);
+    shapeList->append(shape);
+    //qDebug() << shape->toString();
+    qDebug() << shapeList->at(0)->toString();
+
+    shapeList->at(0)->draw(*canvas);
     text->setText(QString::number(shapeList->count()));
 
 }
