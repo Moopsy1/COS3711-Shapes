@@ -3,8 +3,12 @@
 
 class memento
 {
-public:
+private:
+    friend class ShapesList;
     memento();
+    int getState();
+    void setState(int a);
+    int state;
 };
 
 #endif // MEMENTO_H

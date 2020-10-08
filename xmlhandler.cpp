@@ -37,7 +37,7 @@ void XMLHAndler::SaveToFile(QString file_name)
 void XMLHAndler::LoadFromFile(ShapesList &List, QString file_name)
 {
     QFile file(file_name);
-    if(!file.open(QFile::ReadWrite)){
+    if(!file.open(QFile::ReadOnly)){
         qDebug() <<"Could not open File";
         return;
     }
@@ -45,12 +45,15 @@ void XMLHAndler::LoadFromFile(ShapesList &List, QString file_name)
     if(!doc->setContent(&file)){
         qDebug() <<"Could not set doc"<<file.error();
         file.close();
+        return;
     }
     //Doc is loaded into memory
     file.close();
     //doc.~QDomDocument();
     QDomElement root = doc->documentElement();
-    if(root.tagName() != "shapeList") qDebug() <<"XML root is wrong";
+    if(root.tagName() != "shapeList") {qDebug() <<"XML root is wrong";
+    return;
+    }
     QDomNode n = root.firstChild();
     while(!n.isNull()){
         QSharedPointer<AbstractShape> shape;

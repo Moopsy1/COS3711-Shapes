@@ -24,14 +24,15 @@ Shapes::Shapes(QWidget *parent) :
     ui->penColCombo->setCurrentText("black");
     shapeList = shapeList->getinstance();
 
+    doc.LoadFromFile(*shapeList);
+    qDebug() << "shapelist is: " << shapeList->count();
+    if(shapeList->count()>0){
+        if(shapeList->at(index) != shapeList->last()) ui->Next->setEnabled(true);
+        if(index != 0) ui->Previous->setEnabled(true);
+        shapeList->at(index)->draw(*canvas);
+    }
     if(!shapeList->isEmpty()){
         ui->Next->setEnabled(true);
-    }
-    doc.LoadFromFile(*shapeList);
-    if(shapeList->count()>0){
-    if(shapeList->at(index) != shapeList->last()) ui->Next->setEnabled(true);
-    if(index != 0) ui->Previous->setEnabled(true);
-    shapeList->at(index)->draw(*canvas);
     }
     //text->setText(QString::number(shapeList->count()));
 }
@@ -102,7 +103,7 @@ void Shapes::on_createShape_clicked()
     if(shapeList->at(index) != shapeList->last()) ui->Next->setEnabled(true);
     if(index != 0) ui->Previous->setEnabled(true);
     shapeList->at(index)->draw(*canvas);
-    text->setText(QString::number(shapeList->count()));
+    //text->setText(QString::number(shapeList->count()));
 
 }
 
@@ -131,13 +132,21 @@ void Shapes::on_Savestate_clicked()
 
 void Shapes::on_Loadstate_clicked()
 {
+    QFile file("memento.xml");
+    if(!file.open(QFile::ReadOnly)){
+        qDebug() <<"No Memento Exists, cannot restore";
+        return;
+    }
 
     shapeList->clear();
     shapeList->setMemento();
 
-    index = 0;
-    shapeList->at(index)->draw(*canvas);
-    if(index== 0)ui->Previous->setEnabled(false);
-    if(shapeList->at(index) == shapeList->last()) ui->Next->setEnabled(false);
-    else ui->Next->setEnabled(true);
+    if(!shapeList->isEmpty()){
+        index = 0;
+        shapeList->at(index)->draw(*canvas);
+        if(index== 0)ui->Previous->setEnabled(false);
+        if(shapeList->at(index) == shapeList->last()) ui->Next->setEnabled(false);
+        else ui->Next->setEnabled(true);
+    }
+    else qDebug() << "Memento could not be restored";
 }
