@@ -30,6 +30,10 @@ private slots:
 
     void on_Next_clicked();
 
+    void on_Savestate_clicked();
+
+    void on_Loadstate_clicked();
+
 private:
     QSharedPointer<AbstractShape> shape;
     Canvas *canvas;

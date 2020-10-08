@@ -211,6 +211,20 @@
       </item>
      </layout>
     </item>
+    <item>
+     <widget class="QPushButton" name="Savestate">
+      <property name="text">
+       <string>Savestate</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="Loadstate">
+      <property name="text">
+       <string>Loadstate</string>
+      </property>
+     </widget>
+    </item>
    </layout>
   </widget>
   <widget class="QMenuBar" name="menuBar">

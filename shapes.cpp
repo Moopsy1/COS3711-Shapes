@@ -14,9 +14,9 @@ Shapes::Shapes(QWidget *parent) :
     ui->setupUi(this);
     canvas = new Canvas;
     index = 0;
-    text = new QTextEdit("Index:");
+    //text = new QTextEdit("Index:");
     ui->MainLayout->addWidget(canvas);
-    ui->MainLayout->addWidget(text);
+    //ui->MainLayout->addWidget(text);
 
     QStringList colorNames = QColor::colorNames();
     ui->fillColCombo->addItems(colorNames);
@@ -33,7 +33,7 @@ Shapes::Shapes(QWidget *parent) :
     if(index != 0) ui->Previous->setEnabled(true);
     shapeList->at(index)->draw(*canvas);
     }
-    text->setText(QString::number(shapeList->count()));
+    //text->setText(QString::number(shapeList->count()));
 }
 
 Shapes::~Shapes()
@@ -122,4 +122,22 @@ void Shapes::on_Next_clicked()
     shapeList->at(index)->draw(*canvas);
     if(shapeList->at(index) == shapeList->last()) ui->Next->setEnabled(false);
     if(index != 0)ui->Previous->setEnabled(true);
+}
+
+void Shapes::on_Savestate_clicked()
+{
+    shapeList->createMemento();
+}
+
+void Shapes::on_Loadstate_clicked()
+{
+
+    shapeList->clear();
+    shapeList->setMemento();
+
+    index = 0;
+    shapeList->at(index)->draw(*canvas);
+    if(index== 0)ui->Previous->setEnabled(false);
+    if(shapeList->at(index) == shapeList->last()) ui->Next->setEnabled(false);
+    else ui->Next->setEnabled(true);
 }

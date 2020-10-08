@@ -23,7 +23,8 @@ SOURCES += main.cpp\
     shape2property.cpp \
     elipse.cpp \
     rectangle.cpp \
-    xmlhandler.cpp
+    xmlhandler.cpp \
+    memento.cpp
 
 HEADERS  += shapes.h \
     abstractshape.h \
@@ -35,7 +36,8 @@ HEADERS  += shapes.h \
     shape2property.h \
     elipse.h \
     rectangle.h \
-    xmlhandler.h
+    xmlhandler.h \
+    memento.h
 
 FORMS    += shapes.ui
 
