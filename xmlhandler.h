@@ -14,8 +14,8 @@ class XMLHAndler
 {
 public:
     void ShapeToNode(AbstractShape &s);
-    void SaveToFile();
-    void LoadFromFile(ShapesList &List);
+    void SaveToFile(QString file_name = "shapeList.xml");
+    void LoadFromFile(ShapesList &List, QString file_name = "shapeList.xml");
     void update_DOM(ShapesList &List);
     //void load from file
     XMLHAndler();

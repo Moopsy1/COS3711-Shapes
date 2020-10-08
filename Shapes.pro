@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui xml
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -22,7 +22,8 @@ SOURCES += main.cpp\
     square.cpp \
     shape2property.cpp \
     elipse.cpp \
-    rectangle.cpp
+    rectangle.cpp \
+    xmlhandler.cpp
 
 HEADERS  += shapes.h \
     abstractshape.h \
@@ -33,7 +34,8 @@ HEADERS  += shapes.h \
     square.h \
     shape2property.h \
     elipse.h \
-    rectangle.h
+    rectangle.h \
+    xmlhandler.h
 
 FORMS    += shapes.ui
 

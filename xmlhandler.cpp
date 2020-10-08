@@ -19,9 +19,9 @@ void XMLHAndler::ShapeToNode(AbstractShape &s)
 
 }
 
-void XMLHAndler::SaveToFile()
+void XMLHAndler::SaveToFile(QString file_name)
 {
-    QFile file("shapeList.xml");
+    QFile file(file_name);
     if(!file.open(QFile::WriteOnly)){
         qDebug() << "failed opening file"<< QString(file.error());
         return;
@@ -34,9 +34,9 @@ void XMLHAndler::SaveToFile()
     file.close();
 }
 
-void XMLHAndler::LoadFromFile(ShapesList &List)
+void XMLHAndler::LoadFromFile(ShapesList &List, QString file_name)
 {
-    QFile file("shapeList.xml");
+    QFile file(file_name);
     if(!file.open(QFile::ReadWrite)){
         qDebug() <<"Could not open File";
         return;
