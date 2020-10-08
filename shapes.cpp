@@ -13,7 +13,7 @@ Shapes::Shapes(QWidget *parent) :
 {
     ui->setupUi(this);
     canvas = new Canvas;
-
+    index = 0;
     text = new QTextEdit("Index:");
     ui->MainLayout->addWidget(canvas);
     ui->MainLayout->addWidget(text);
@@ -27,12 +27,19 @@ Shapes::Shapes(QWidget *parent) :
     if(!shapeList->isEmpty()){
         ui->Next->setEnabled(true);
     }
+    doc.LoadFromFile(*shapeList);
+    if(shapeList->count()>0){
+    if(shapeList->at(index) != shapeList->last()) ui->Next->setEnabled(true);
+    if(index != 0) ui->Previous->setEnabled(true);
+    shapeList->at(index)->draw(*canvas);
+    }
     text->setText(QString::number(shapeList->count()));
-
 }
 
 Shapes::~Shapes()
 {
+    doc.update_DOM(*shapeList);
+    doc.SaveToFile();
     delete ui;
 }
 
@@ -49,32 +56,32 @@ void Shapes::on_createShape_clicked()
 
     if(shape_type == "Circle"){
         shape = QSharedPointer<Circle>( new Circle(penWidth,
-                           penColor,
-                           fillColor,
-                           prop1));
+                                                   penColor,
+                                                   fillColor,
+                                                   prop1));
     }
     else if (shape_type == "Square"){
         shape = QSharedPointer<Square>( new Square(penWidth,
-                           penColor,
-                           fillColor,
-                           prop1));
+                                                   penColor,
+                                                   fillColor,
+                                                   prop1));
 
     }
     else if (shape_type == "Elipse"){
         shape = QSharedPointer<Elipse>( new Elipse(penWidth,
-                           penColor,
-                           fillColor,
-                           prop1,
-                           prop2));
-//        qDebug() << "in shapes .cpp " << typeid(shape).name();
+                                                   penColor,
+                                                   fillColor,
+                                                   prop1,
+                                                   prop2));
+        //        qDebug() << "in shapes .cpp " << typeid(shape).name();
     }
     else if (shape_type == "Rectangle"){
         shape = QSharedPointer<RectAngle>( new RectAngle(penWidth,
-                              penColor,
-                              fillColor,
-                              prop1,
-                              prop2));
-   }
+                                                         penColor,
+                                                         fillColor,
+                                                         prop1,
+                                                         prop2));
+    }
     qDebug() <<"index is" << index;
     if(shapeList->empty()){
         qDebug() << "shapeList is empty we append";

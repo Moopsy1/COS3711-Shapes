@@ -4,6 +4,7 @@
 #include <QStringList>
 #include "abstractshape.h"
 
+
 class ShapesList : public QList<QSharedPointer<AbstractShape> >
 {
 private:

@@ -1,11 +1,12 @@
 #include "shapeslist.h"
+#include "QPointer"
 
 ShapesList::ShapesList(){}
 
-ShapesList* ShapesList::OnlyList = nullptr;
+ShapesList* ShapesList::OnlyList = NULL;
 
 ShapesList* ShapesList::getinstance(){
-    if(OnlyList == nullptr){
+    if(OnlyList == NULL){
         OnlyList = new ShapesList;
     }
     return OnlyList;

@@ -19,9 +19,9 @@ void Shape1Property::setProperty1(int value)
 QStringList Shape1Property::toString()
 {
     return QStringList() << getType()
-                         << QString::number(getProperty1())
-                         << getPenColor().name()
                          << QString::number(getPenWidth())
-                         << getFillColor().name();
+                         << getPenColor().name()
+                         << getFillColor().name()
+                         << QString::number(getProperty1());
 }
 

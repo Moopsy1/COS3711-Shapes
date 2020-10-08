@@ -6,6 +6,7 @@
 #include "canvas.h"
 #include <QtWidgets>
 #include <shapeslist.h>
+#include "xmlhandler.h"
 //#include "square.h"
 //#include <QSharedPointer>
 
@@ -35,7 +36,8 @@ private:
     Ui::Shapes *ui;
     QTextEdit *text;
     ShapesList *shapeList;
-    int index = 0;
+    int index;
+    XMLHAndler doc;
 
 };
 
